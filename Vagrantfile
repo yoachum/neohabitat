@@ -10,12 +10,14 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/xenial64"
   config.vm.box_check_update = false
 
+  config.vm.network "private_network", ip: "192.168.86.19"
   config.vm.network "forwarded_port", guest: 1337, host: 1337, host_ip: "0.0.0.0"
   config.vm.network "forwarded_port", guest: 1986, host: 1986, host_ip: "0.0.0.0"
   config.vm.network "forwarded_port", guest: 3307, host: 3307, host_ip: "0.0.0.0"
   config.vm.network "forwarded_port", guest: 5190, host: 5190, host_ip: "0.0.0.0"
-  config.vm.network "forwarded_port", guest: 9000, host: 9000, host_ip: "0.0.0.0"
-  config.vm.network "forwarded_port", guest: 27017, host: 27017, host_ip: "0.0.0.0"
+  config.vm.network "forwarded_port", guest: 9001, host: 9001, host_ip: "0.0.0.0"
+  config.vm.network "forwarded_port", guest: 27018, host: 27018, host_ip: "0.0.0.0"
+  config.vm.network "forwarded_port", guest: 80, host: 8080, id: "nginx"
 
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", "1024"]
